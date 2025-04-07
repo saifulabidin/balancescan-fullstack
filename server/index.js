@@ -12,7 +12,8 @@ const networks = {
   "Optimism Sepolia": ["https://sepolia.optimism.io", "https://optimism-sepolia.drpc.org"],
   "Blast Sepolia": ["https://sepolia.blast.io", "https://blast-sepolia.drpc.org"],
   "Unichain Sepolia": ["https://unichain-sepolia.drpc.org", "https://sepolia.unichain.org"],
-  "B2N Network": ["https://t3rn-b2n.blockpi.network/v1/rpc/public", "https://b2n.rpc.caldera.xyz/http"]
+  "B2N Network": ["https://t3rn-b2n.blockpi.network/v1/rpc/public", "https://b2n.rpc.caldera.xyz/http"],
+  "B2N V1 Network": ["https://brn.rpc.caldera.xyz"],
 };
 
 app.get("/balance/:address", async (req, res) => {
@@ -31,10 +32,10 @@ app.get("/balance/:address", async (req, res) => {
         const provider = new ethers.JsonRpcProvider(rpc);
         const rawBalance = await provider.getBalance(address);
         balance = ethers.formatEther(rawBalance);
-        break; // break if success
+        break; // ✅ sukses, keluar dari loop RPC
       } catch (err) {
         console.log(`RPC failed for ${network}: ${rpc}`);
-        continue; // try next RPC
+        continue;
       }
     }
 
