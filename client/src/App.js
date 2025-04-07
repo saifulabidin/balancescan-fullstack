@@ -116,7 +116,7 @@ function App() {
             {address && (
               <button
                 type="button"
-                className="absolute text-[#cecece] hover:opacity-50"
+                className="absolute text-[#cecece] hover:opacity-50 active:text-t3rn-pink"
                 style={{ top: "calc(50% - 8px)", right: "16px", opacity: 1 }}
                 onClick={() => setAddress("")}
               >
@@ -133,7 +133,7 @@ function App() {
             )}
           </div>
           <div className="flex justify-center items-center">
-            <button
+          <button
               onClick={fetchBalance}
               className="bg-[#3396FF] px-6 py-2 rounded-full border-2 border-blue-700 hover:bg-blue-700 transition focus:outline-none focus:ring-2 focus:ring-offset-2 active:bg-blue-700"
             >
@@ -173,8 +173,8 @@ function App() {
                     className={cn(
                       "flex justify-between items-center p-4 rounded-2xl shadow hover:scale-[1.02] transition",
                       dark
-                        ? "bg-gray-700"
-                        : "bg-white"
+                        ? "bg-gray-700 hover:bg-[rgb(38,181,98)]"
+                        : "bg-white hover:bg-[rgb(38,181,98)]"
                     )}
                   >
                     <div className="flex items-center gap-2">
