@@ -28,7 +28,7 @@ function App() {
     setBalances(null);
 
     try {
-      const res = await fetch(`http://localhost:5000/balance/${address}`);
+      const res = await fetch(`http://147.139.176.162:5000/balance/${address}`);
       const data = await res.json();
       setBalances(data);
     } catch (err) {
