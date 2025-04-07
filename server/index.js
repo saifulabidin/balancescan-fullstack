@@ -1,6 +1,6 @@
-const express = require('express');
-const { ethers } = require('ethers');
-const cors = require('cors');
+const express = require("express");
+const { ethers } = require("ethers");
+const cors = require("cors");
 
 const app = express();
 app.use(cors());
@@ -8,13 +8,26 @@ app.use(cors());
 const networks = {
   "Ethereum Sepolia": ["https://1rpc.io/sepolia"],
   "Arbitrum Sepolia": ["https://arbitrum-sepolia.drpc.org", "https://sepolia-rollup.arbitrum.io/rpc"],
-  "Base Sepolia": ["https://base-sepolia-rpc.publicnode.com", "https://base-sepolia.drpc.org"],
-  "Optimism Sepolia": ["https://sepolia.optimism.io", "https://optimism-sepolia.drpc.org"],
-  "Blast Sepolia": ["https://sepolia.blast.io", "https://blast-sepolia.drpc.org"],
-  "Unichain Sepolia": ["https://unichain-sepolia.drpc.org", "https://sepolia.unichain.org"],
-  "B2N Network": ["https://t3rn-b2n.blockpi.network/v1/rpc/public", "https://b2n.rpc.caldera.xyz/http"],
-  "B2N V1 Network": ["https://brn.rpc.caldera.xyz"],
+  "Base Sepolia": ["https://base-sepolia-rpc.publicnode.com"],
+  "Optimism Sepolia": ["https://sepolia.optimism.io"],
+  "Blast Sepolia": ["https://sepolia.blast.io"],
+  "Unichain Sepolia": ["https://unichain-sepolia.drpc.org"],
+  "B2N Network": ["https://b2n.rpc.caldera.xyz/http"],
+  "B2N V1 Network": ["https://brn.rpc.caldera.xyz"]
 };
+
+// BRN Token di Arbitrum Sepolia
+const tokens = {
+  "Arbitrum Sepolia (BRN)": {
+    address: "0x2e76CA39c9bd8d99B2681A60319fC0FE7C9d8336",
+    rpc: "https://arbitrum-sepolia.drpc.org"
+  }
+};
+
+const ERC20_ABI = [
+  "function balanceOf(address) view returns (uint256)",
+  "function decimals() view returns (uint8)"
+];
 
 app.get("/balance/:address", async (req, res) => {
   const { address } = req.params;
@@ -24,22 +37,36 @@ app.get("/balance/:address", async (req, res) => {
     return res.status(400).json({ error: "Invalid address" });
   }
 
+  // Cek ETH Balance semua jaringan
   for (const [network, rpcList] of Object.entries(networks)) {
     let balance = null;
-
     for (let rpc of rpcList) {
       try {
         const provider = new ethers.JsonRpcProvider(rpc);
         const rawBalance = await provider.getBalance(address);
         balance = ethers.formatEther(rawBalance);
-        break; // ✅ sukses, keluar dari loop RPC
+        break;
       } catch (err) {
         console.log(`RPC failed for ${network}: ${rpc}`);
         continue;
       }
     }
-
     result[network] = balance ? parseFloat(balance).toFixed(6) : "error";
+  }
+
+  // Cek BRN Token Balance
+  for (const [label, token] of Object.entries(tokens)) {
+    try {
+      const provider = new ethers.JsonRpcProvider(token.rpc);
+      const contract = new ethers.Contract(token.address, ERC20_ABI, provider);
+      const decimals = await contract.decimals();
+      const rawBalance = await contract.balanceOf(address);
+      const formatted = Number(ethers.formatUnits(rawBalance, decimals));
+      result[label] = formatted.toFixed(6);
+    } catch (err) {
+      console.log(`Token fetch error for ${label}`);
+      result[label] = "error";
+    }
   }
 
   res.json(result);
