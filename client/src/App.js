@@ -11,8 +11,8 @@ const icons = {
   "Optimism Sepolia": "/icons/opst.svg",
   "Blast Sepolia": "/icons/blst.svg",
   "Unichain Sepolia": "/icons/unit.svg",
-  "B2N Network": "/icons/brn.svg",
-  "B2N V1 Network": "/icons/brn.svg",
+  "BRN V2": "/icons/brn.svg",
+  "BRN V1": "/icons/brn.svg",
 };
 
 const explorerUrls = {
@@ -23,8 +23,8 @@ const explorerUrls = {
   "Optimism Sepolia": "https://sepolia-optimism.etherscan.io/address/",
   "Blast Sepolia": "https://sepolia.blastscan.io/address/",
   "Unichain Sepolia": "https://unichain-sepolia.blockscout.com/address/",
-  "B2N Network": "https://b2n.explorer.caldera.xyz/address/",
-  "B2N V1 Network": "https://brn.explorer.caldera.xyz/address/",
+  "BRN V2": "https://b2n.explorer.caldera.xyz/address/",
+  "BRN V1": "https://brn.explorer.caldera.xyz/address/",
 };
 
 function App() {
