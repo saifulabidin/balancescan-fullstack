@@ -36,7 +36,7 @@ function App() {
 
   const fetchBalance = async () => {
     if (!/^0x[a-fA-F0-9]{40}$/.test(address)) {
-      setError("Input Address Sing Bener Lonte !");
+      setError("Invalid Address");
       setBalances(null);
       return;
     }
@@ -55,7 +55,7 @@ function App() {
       const data = await res.json();
       setBalances(data);
     } catch (err) {
-      setError("Gagal Ngambil Data Saldo");
+      setError("Error, Please Try Again Later");
     }
 
     setLoading(false);
@@ -85,12 +85,12 @@ function App() {
           )}
         >
           <h1 className="text-2xl font-bold mb-4 text-center">
-            Cek Saldo ETH + BRN
+            BALANCE SCAN ETH + BRN | TESTNET 
           </h1>
           <input
             type="text"
             className="w-full p-2 rounded mb-4 text-black"
-            placeholder="Address Ethereum 0x... Ojo Ngawur Lonte iii"
+            placeholder="Please Input ETH Address"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
           />
@@ -99,7 +99,7 @@ function App() {
               onClick={fetchBalance}
               className="bg-blue-600 px-6 py-2 rounded-full hover:bg-blue-700 transition"
             >
-              Check Saldo Saiki
+              Scan Now
             </button>
           </div>
 
@@ -108,7 +108,7 @@ function App() {
               <div className="flex flex-col items-center justify-center gap-3">
                 <div className="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
                 <div className="text-blue-400 text-sm animate-pulse">
-                  Sabar SU Lagi Di Cek !
+                  Scanning, Please Wait!
                 </div>
               </div>
             )}
