@@ -17,25 +17,30 @@ function App() {
   const [error, setError] = useState("");
 
   const fetchBalance = async () => {
-    if (!/^0x[a-fA-F0-9]{40}$/.test(address)) {
-      setError("Input Address Sing Benere Lonte !");
-      setBalances(null);
-      return;
-    }
-
-    setLoading(true);
-    setError("");
+  if (!/^0x[a-fA-F0-9]{40}$/.test(address)) {
+    setError("Input Address Sing Bener Lonte !");
     setBalances(null);
+    return;
+  }
 
-    try {
-      const res = await fetch(`https://2025-147-139-176-162.ngrok-free.app/balance/${address}`);
-      const data = await res.json();
-      setBalances(data);
-    } catch (err) {
-      setError("Gagal Ngambil Data Saldo");
-    }
-    setLoading(false);
-  };
+  setLoading(true);
+  setError("");
+  setBalances(null);
+
+  try {
+    const res = await fetch(`https://2025-147-139-176-162.ngrok-free.app/balance/${address}`, {
+      headers: {
+        'ngrok-skip-browser-warning': 'true'
+      }
+    });
+    const data = await res.json();
+    setBalances(data);
+  } catch (err) {
+    setError("Gagal Ngambil Data Saldo");
+  }
+  
+  setLoading(false);
+};
 
   return (
     <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center p-6">
