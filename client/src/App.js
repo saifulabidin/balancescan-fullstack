@@ -45,7 +45,7 @@ function App() {
 
     try {
       const res = await fetch(
-        `https://4ff0-147-139-176-162.ngrok-free.app/balance/${address}`,
+        `https://62ad-147-139-176-162.ngrok-free.app/balance/${address}`,
         {
           headers: {
             "ngrok-skip-browser-warning": "true",
