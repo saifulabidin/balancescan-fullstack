@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Moon, Sun } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { cn } from "./lib/utils"; // helper classNames
+import { cn } from "./lib/utils";
 
 const icons = {
   "Ethereum Sepolia": "/icons/eth.svg",
   "Arbitrum Sepolia": "/icons/arbm.svg",
-  "Arbitrum Sepolia (BRN)": "/icons/brn.svg", // pakai icon B2N
+  "Arbitrum Sepolia (BRN)": "/icons/brn.svg",
   "Base Sepolia": "/icons/bast.svg",
   "Optimism Sepolia": "/icons/opst.svg",
   "Blast Sepolia": "/icons/blst.svg",
