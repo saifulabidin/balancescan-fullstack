@@ -95,7 +95,8 @@ function App() {
               className={cn(
                 "flex w-full rounded-[16px] p-4 ring-offset-background file:border-0 file:bg-transparent",
                 "placeholder:text-input-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20",
-                "disabled:cursor-not-allowed disabled:opacity-50 px-10 bg-[#1E2026] py-2.5 text-white"
+                "disabled:cursor-not-allowed disabled:opacity-50 px-10 py-2.5",
+                dark ? "bg-[#1E2026] text-white" : "bg-white text-black"
               )}
               placeholder="Input ETH Address"
               value={address}
@@ -132,7 +133,7 @@ function App() {
           <div className="flex justify-center items-center">
             <button
               onClick={fetchBalance}
-              className="bg-blue-600 px-6 py-2 rounded-full border-2 border-blue-700 hover:bg-blue-700 transition"
+              className="bg-[#3396FF] px-6 py-2 rounded-full border-2 border-blue-700 hover:bg-blue-700 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[rgb(38,181,98)] active:bg-[rgb(38,181,98)]"
             >
               Scan Now
             </button>
@@ -141,8 +142,8 @@ function App() {
           <div className="mt-6 space-y-4">
             {loading && (
               <div className="flex flex-col items-center justify-center gap-3">
-                <div className="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-                <div className="text-blue-400 text-sm animate-pulse">
+                <div className="w-10 h-10 border-4 border-[rgb(242,90,103)] border-t-transparent rounded-full animate-spin"></div>
+                <div className="text-[rgb(242,90,103)] text-sm animate-pulse">
                   Scanning, Please Wait!
                 </div>
               </div>
@@ -170,8 +171,8 @@ function App() {
                     className={cn(
                       "flex justify-between items-center p-4 rounded-2xl shadow hover:scale-[1.02] transition",
                       dark
-                        ? "bg-gray-700 hover:bg-gray-600"
-                        : "bg-white hover:bg-gray-100"
+                        ? "bg-gray-700 hover:bg-[rgb(38,181,98)]"
+                        : "bg-white hover:bg-[rgb(38,181,98)]"
                     )}
                   >
                     <div className="flex items-center gap-2">
