@@ -113,27 +113,29 @@ function App() {
             >
               <path d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z" />
             </svg>
-            <button
-              type="button"
-              className="absolute text-[#cecece] hover:opacity-50 active:text-t3rn-pink"
-              style={{ top: "calc(50% - 8px)", right: "16px", opacity: 1 }}
-              onClick={() => setAddress("")}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="16"
-                width="16"
-                viewBox="0 0 24 24"
-                fill="currentColor"
+            {address && (
+              <button
+                type="button"
+                className="absolute text-[#cecece] hover:opacity-50"
+                style={{ top: "calc(50% - 8px)", right: "16px", opacity: 1 }}
+                onClick={() => setAddress("")}
               >
-                <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 10.5858L9.17157 7.75736L7.75736 9.17157L10.5858 12L7.75736 14.8284L9.17157 16.2426L12 13.4142L14.8284 16.2426L16.2426 14.8284L13.4142 12L16.2426 9.17157L14.8284 7.75736L12 10.5858Z" />
-              </svg>
-            </button>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="16"
+                  width="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 10.5858L9.17157 7.75736L7.75736 9.17157L10.5858 12L7.75736 14.8284L9.17157 16.2426L12 13.4142L14.8284 16.2426L16.2426 14.8284L13.4142 12L16.2426 9.17157L14.8284 7.75736L12 10.5858Z" />
+                </svg>
+              </button>
+            )}
           </div>
           <div className="flex justify-center items-center">
             <button
               onClick={fetchBalance}
-              className="bg-[#3396FF] px-6 py-2 rounded-full border-2 border-blue-700 hover:bg-blue-700 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[rgb(38,181,98)] active:bg-[rgb(38,181,98)]"
+              className="bg-[#3396FF] px-6 py-2 rounded-full border-2 border-blue-700 hover:bg-blue-700 transition focus:outline-none focus:ring-2 focus:ring-offset-2 active:bg-blue-700"
             >
               Scan Now
             </button>
@@ -171,8 +173,8 @@ function App() {
                     className={cn(
                       "flex justify-between items-center p-4 rounded-2xl shadow hover:scale-[1.02] transition",
                       dark
-                        ? "bg-gray-700 hover:bg-[rgb(38,181,98)]"
-                        : "bg-white hover:bg-[rgb(38,181,98)]"
+                        ? "bg-gray-700"
+                        : "bg-white"
                     )}
                   >
                     <div className="flex items-center gap-2">
