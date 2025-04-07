@@ -7,7 +7,7 @@ app.use(cors());
 
 const networks = {
   "Ethereum Sepolia": ["https://1rpc.io/sepolia"],
-  "Arbitrum Sepolia": ["https://arbitrum-sepolia.drpc.org", "https://sepolia-rollup.arbitrum.io/rpc"],
+  "Arbitrum Sepolia": ["https://sepolia-rollup.arbitrum.io/rpc"],
   "Base Sepolia": ["https://base-sepolia-rpc.publicnode.com"],
   "Optimism Sepolia": ["https://sepolia.optimism.io"],
   "Blast Sepolia": ["https://sepolia.blast.io"],
@@ -20,7 +20,7 @@ const networks = {
 const tokens = {
   "Arbitrum Sepolia (BRN)": {
     address: "0x2e76CA39c9bd8d99B2681A60319fC0FE7C9d8336",
-    rpc: "https://arbitrum-sepolia.drpc.org"
+    rpc: "https://sepolia-rollup.arbitrum.io/rpc"
   }
 };
 
