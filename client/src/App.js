@@ -11,6 +11,7 @@ const icons = {
   "Blast Sepolia": "/icons/blst.svg",
   "Unichain Sepolia": "/icons/unit.svg",
   "B2N Network": "/icons/brn.svg",
+  "B2N V1 Network": "/icons/brn.svg",
 };
 
 const explorerUrls = {
@@ -21,6 +22,7 @@ const explorerUrls = {
   "Blast Sepolia": "https://sepolia.blastscan.io/address/",
   "Unichain Sepolia": "https://unichain-sepolia.blockscout.com/address/",
   "B2N Network": "https://b2n.explorer.caldera.xyz/address/",
+  "B2N V1 Network": "https://brn.explorer.caldera.xyz/address/",
 };
 
 function App() {
@@ -43,7 +45,7 @@ function App() {
 
     try {
       const res = await fetch(
-        `https://2025-147-139-176-162.ngrok-free.app/balance/${address}`,
+        `https://4ff0-147-139-176-162.ngrok-free.app/balance/${address}`,
         {
           headers: {
             "ngrok-skip-browser-warning": "true",
