@@ -28,7 +28,7 @@ function App() {
     setBalances(null);
 
     try {
-      const res = await fetch(`http://147.139.176.162:5000/balance/${address}`);
+      const res = await fetch(`https://2025-147-139-176-162.ngrok-free.app/balance/${address}`);
       const data = await res.json();
       setBalances(data);
     } catch (err) {
