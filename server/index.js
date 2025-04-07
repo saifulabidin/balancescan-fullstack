@@ -11,7 +11,10 @@ const networks = {
   "Base Sepolia": ["https://base-sepolia-rpc.publicnode.com"],
   "Optimism Sepolia": ["https://sepolia.optimism.io"],
   "Blast Sepolia": ["https://sepolia.blast.io"],
-  "Unichain Sepolia": ["https://unichain-sepolia.drpc.org", "https://sepolia.unichain.org"],
+  "Unichain Sepolia": [
+    "https://unichain-sepolia.drpc.org",
+    "https://sepolia.unichain.org"
+  ],
   "BRN V2": ["https://b2n.rpc.caldera.xyz/http"],
   "BRN V1": ["https://brn.rpc.caldera.xyz"]
 };
@@ -31,43 +34,51 @@ const ERC20_ABI = [
 
 app.get("/balance/:address", async (req, res) => {
   const { address } = req.params;
-  const result = {};
 
   if (!/^0x[a-fA-F0-9]{40}$/.test(address)) {
     return res.status(400).json({ error: "Invalid address" });
   }
 
-  // Cek ETH Balance semua jaringan
-  for (const [network, rpcList] of Object.entries(networks)) {
-    let balance = null;
+  const result = {};
+
+  // Cek ETH balances paralel
+  const ethBalancePromises = Object.entries(networks).map(async ([network, rpcList]) => {
     for (let rpc of rpcList) {
       try {
         const provider = new ethers.JsonRpcProvider(rpc);
         const rawBalance = await provider.getBalance(address);
-        balance = ethers.formatEther(rawBalance);
-        break;
+        return [network, parseFloat(ethers.formatEther(rawBalance)).toFixed(6)];
       } catch (err) {
         console.log(`RPC failed for ${network}: ${rpc}`);
-        continue;
       }
     }
-    result[network] = balance ? parseFloat(balance).toFixed(6) : "error";
-  }
+    return [network, "error"];
+  });
 
-  // Cek BRN Token Balance
-  for (const [label, token] of Object.entries(tokens)) {
+  const ethResults = await Promise.all(ethBalancePromises);
+  ethResults.forEach(([network, balance]) => {
+    result[network] = balance;
+  });
+
+  // Cek Token balances paralel
+  const tokenBalancePromises = Object.entries(tokens).map(async ([label, token]) => {
     try {
       const provider = new ethers.JsonRpcProvider(token.rpc);
       const contract = new ethers.Contract(token.address, ERC20_ABI, provider);
       const decimals = await contract.decimals();
       const rawBalance = await contract.balanceOf(address);
-      const formatted = Number(ethers.formatUnits(rawBalance, decimals));
-      result[label] = formatted.toFixed(6);
+      const formatted = Number(ethers.formatUnits(rawBalance, decimals)).toFixed(6);
+      return [label, formatted];
     } catch (err) {
       console.log(`Token fetch error for ${label}`);
-      result[label] = "error";
+      return [label, "error"];
     }
-  }
+  });
+
+  const tokenResults = await Promise.all(tokenBalancePromises);
+  tokenResults.forEach(([label, balance]) => {
+    result[label] = balance;
+  });
 
   res.json(result);
 });
