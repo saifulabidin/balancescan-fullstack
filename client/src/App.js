@@ -6,6 +6,7 @@ import { cn } from "./lib/utils"; // helper classNames
 const icons = {
   "Ethereum Sepolia": "/icons/eth.svg",
   "Arbitrum Sepolia": "/icons/arbm.svg",
+  "Arbitrum Sepolia (BRN)": "/icons/brn.svg", // pakai icon B2N
   "Base Sepolia": "/icons/bast.svg",
   "Optimism Sepolia": "/icons/opst.svg",
   "Blast Sepolia": "/icons/blst.svg",
@@ -17,6 +18,7 @@ const icons = {
 const explorerUrls = {
   "Ethereum Sepolia": "https://sepolia.etherscan.io/address/",
   "Arbitrum Sepolia": "https://sepolia.arbiscan.io/address/",
+  "Arbitrum Sepolia (BRN)": "https://sepolia.arbiscan.io/token/0x2e76CA39c9bd8d99B2681A60319fC0FE7C9d8336?a=",
   "Base Sepolia": "https://sepolia.basescan.org/address/",
   "Optimism Sepolia": "https://sepolia-optimism.etherscan.io/address/",
   "Blast Sepolia": "https://sepolia.blastscan.io/address/",
@@ -47,9 +49,7 @@ function App() {
       const res = await fetch(
         `https://62ad-147-139-176-162.ngrok-free.app/balance/${address}`,
         {
-          headers: {
-            "ngrok-skip-browser-warning": "true",
-          },
+          headers: { "ngrok-skip-browser-warning": "true" },
         }
       );
       const data = await res.json();
@@ -69,7 +69,6 @@ function App() {
       )}
     >
       <div className="max-w-xl mx-auto p-6">
-        {/* Toggle mode */}
         <div className="flex justify-end mb-4">
           <button
             onClick={() => setDark(!dark)}
@@ -86,7 +85,7 @@ function App() {
           )}
         >
           <h1 className="text-2xl font-bold mb-4 text-center">
-            Cek Saldo ETH | TestNet
+            Cek Saldo ETH + BRN
           </h1>
           <input
             type="text"
