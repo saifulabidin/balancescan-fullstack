@@ -12,8 +12,8 @@ const networks = {
   "Optimism Sepolia": ["https://sepolia.optimism.io"],
   "Blast Sepolia": ["https://sepolia.blast.io"],
   "Unichain Sepolia": ["https://unichain-sepolia.drpc.org", "https://sepolia.unichain.org"],
-  "B2N Network": ["https://b2n.rpc.caldera.xyz/http"],
-  "B2N V1 Network": ["https://brn.rpc.caldera.xyz"]
+  "BRN V2": ["https://b2n.rpc.caldera.xyz/http"],
+  "BRN V1": ["https://brn.rpc.caldera.xyz"]
 };
 
 // BRN Token di Arbitrum Sepolia
