@@ -15,6 +15,7 @@ const networks = {
     "https://unichain-sepolia.drpc.org",
     "https://sepolia.unichain.org"
   ],
+  "Monad Testnet": ["https://testnet-rpc.monad.xyz"],
   "BRN V2": ["https://b2n.rpc.caldera.xyz/http"],
   "BRN V1": ["https://brn.rpc.caldera.xyz"]
 };

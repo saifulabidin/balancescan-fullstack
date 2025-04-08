@@ -1,33 +1,39 @@
+/* Gaya utama untuk aplikasi */
 .App {
   text-align: center;
 }
 
+/* Gaya untuk logo aplikasi */
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
+/* Animasi untuk logo aplikasi */
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
 
+/* Gaya untuk header aplikasi */
 .App-header {
-  background-color: #282c34;
+  background-color: #1a202c; /* Warna latar belakang gelap */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: white; /* Warna teks putih */
 }
 
+/* Gaya untuk tautan di aplikasi */
 .App-link {
-  color: #61dafb;
+  color: #4a5568; /* Warna biru terang */
 }
 
+/* Animasi rotasi untuk logo */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,4 +41,199 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Gaya untuk kontainer utama aplikasi */
+.app-container {
+  min-height: 100vh;
+  background-color: #1a202c; /* Warna latar belakang gelap */
+  color: #e2e8f0; /* Warna teks terang */
+  transition: background-color 0.3s ease;
+  position: relative;
+}
+
+/* Gaya untuk kontainer konten */
+.content-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Gaya untuk kartu utama */
+.card {
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #2d3748; /* Warna latar belakang kartu gelap */
+  border: 1px solid #4a5568; /* Border kartu */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Gaya untuk input alamat */
+.input-container {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.input-field {
+  display: flex;
+  width: 100%;
+  padding: 0.625rem 2.5rem 0.625rem 2.5rem; /* Padding untuk input */
+  border-radius: 16px; /* Membuat sudut membulat */
+  background-color: #1e2026; /* Warna latar belakang gelap */
+  color: #e2e8f0; /* Warna teks terang */
+  border: 1px solid #4a5568; /* Border input */
+  outline: none; /* Menghapus outline default */
+  transition: box-shadow 0.2s ease; /* Transisi untuk fokus */
+}
+
+.input-field::placeholder {
+  color: #a0aec0; /* Warna placeholder */
+}
+
+.input-field:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.5); /* Efek fokus */
+}
+
+.input-field:disabled {
+  cursor: not-allowed;
+  opacity: 0.5; /* Efek untuk input yang dinonaktifkan */
+}
+
+/* Gaya untuk ikon pencarian di input */
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  color: #a0aec0; /* Warna ikon */
+}
+
+/* Gaya untuk tombol hapus input */
+.clear-button {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #a0aec0;
+}
+
+/* Gaya untuk tombol utama */
+.button-container {
+  text-align: center;
+  margin-top: -0.75rem; /* Mengurangi jarak antara tombol dan input */
+}
+
+.fetch-button {
+  background-color: #1e2026; /* Warna biru gelap */
+  color: #ffffff;
+  padding: 0.5rem 0.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid #1e2026;
+  transition: background-color 0.3s ease;
+}
+
+.fetch-button:hover {
+  background-color: #38a169; /* Warna biru terang saat hover */
+}
+
+/* Gaya untuk hasil pemindaian */
+.results-container {
+  margin-top: -0.75rem;
+}
+
+/* Gaya untuk item saldo */
+.balance-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 1rem;
+  box-shadow: 0 2px 4px rgba(92, 55, 55, 0.1);
+  background-color: #1e2026; /* Warna latar belakang item saldo gelap */
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.balance-item:hover {
+  transform: scale(1.02);
+  background-color: #38a169; /* Warna hijau terang saat hover */
+}
+
+/* Gaya untuk ikon jaringan */
+.network-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+}
+
+/* Gaya untuk nama jaringan */
+.network-name {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #e2e8f0; /* Warna teks terang */
+}
+
+/* Gaya untuk jumlah saldo */
+.balance {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #e2e8f0; /* Warna teks terang */
+}
+
+/* Gaya untuk judul utama */
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #e2e8f0; /* Warna teks terang */
+}
+
+/* Gaya untuk margin dan spasi */
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
+.space-y-4 > * + * {
+  margin-top: 1rem;
+}
+
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.gap-6 > * + * {
+  margin-left: 1.5rem;
+}
+
+/* Hapus gaya untuk tombol tema */
+.theme-toggle {
+  display: none;
+}
+
+.theme-toggle-button {
+  display: none;
 }
