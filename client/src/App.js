@@ -31,8 +31,8 @@ const isValidAddress = (address) => /^0x[a-fA-F0-9]{40}$/.test(address);
 
 const Loader = () => (
   <div className="flex flex-col items-center justify-center gap-3">
-    <div className="w-10 h-10 border-4 border-[rgb(242,90,103)] border-t-transparent rounded-full animate-spin"></div>
-    <div className="text-[rgb(242,90,103)] text-sm animate-pulse">
+    <div className="w-10 h-10 border-4 border-[rgb(177,250,40)] border-t-transparent rounded-full animate-spin"></div>
+    <div className="text-[rgb(165,224,54)] text-sm animate-pulse">
       Scanning, Please Wait!
     </div>
   </div>
@@ -174,7 +174,7 @@ function App() {
 
   const fetchBalance = async () => {
     if (!isValidAddress(address)) {
-      setError("Invalid Address");
+      setError("Enter Valid Address !");
       setBalances(null);
       return;
     }
@@ -191,7 +191,7 @@ function App() {
       const data = await res.json();
       setBalances(data);
     } catch {
-      setError("Error, Please Try Again Later");
+      setError("RPC Error, Please Try Again Later");
     } finally {
       setLoading(false);
     }
@@ -271,7 +271,7 @@ function App() {
             {!loading && (
               <button
                 onClick={fetchBalance}
-                className="bg-[#3396FF] px-6 py-2 rounded-full border-2 border-blue-700 hover:bg-blue-700 transition focus:outline-none focus:ring-2 focus:ring-offset-2 active:bg-blue-700"
+                className="bg-[#116bcc] px-6 py-2 rounded-full border-2 border-blue-700 hover:bg-blue-700 transition focus:outline-none focus:ring-2 focus:ring-offset-2 active:bg-blue-700"
               >
                 {balances ? "Scan Again" : "Scan Now"}
               </button>
