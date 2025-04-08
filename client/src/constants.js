@@ -20,8 +20,8 @@ export const explorerUrls = {
   "Base Sepolia": "https://sepolia.basescan.org/address/",
   "Optimism Sepolia": "https://sepolia-optimism.etherscan.io/address/",
   "Blast Sepolia": "https://sepolia.blastscan.io/address/",
-  "Monad Testnet": "https://monad-testnet.socialscan.io/address",
   "Unichain Sepolia": "https://unichain-sepolia.blockscout.com/address/",
+  "Monad Testnet": "https://monad-testnet.socialscan.io/address/",
   "BRN V2": "https://b2n.explorer.caldera.xyz/address/",
   "BRN V1": "https://brn.explorer.caldera.xyz/address/",
 };

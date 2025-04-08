@@ -2,10 +2,16 @@ import { motion } from "framer-motion";
 import { cn } from "../lib/utils";
 import { icons, explorerUrls } from "../constants";
 
+// Fungsi untuk menentukan simbol mata uang berdasarkan jaringan
+const getCurrencySymbol = (net) => {
+  if (net === "Monad Testnet") return "MON";
+  if (net.includes("BRN")) return "BRN";
+  return "ETH";
+};
+
 // Komponen BalanceItem untuk menampilkan informasi saldo
 const BalanceItem = ({ net, bal, address, dark }) => (
   <motion.a
-    // URL explorer untuk jaringan tertentu
     href={`${explorerUrls[net] || explorerUrls["Ethereum Sepolia"]}${address}`}
     target="_blank"
     rel="noopener noreferrer"
@@ -25,7 +31,7 @@ const BalanceItem = ({ net, bal, address, dark }) => (
     </div>
     {/* Bagian kanan: jumlah saldo */}
     <div className="balance">
-      {bal} {net.includes("BRN") ? "BRN" : "ETH"}
+      {bal} {getCurrencySymbol(net)}
     </div>
   </motion.a>
 );
