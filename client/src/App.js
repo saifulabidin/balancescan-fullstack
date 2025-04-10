@@ -50,7 +50,7 @@ function App() {
             <input
               type="search"
               className="input-field"
-              placeholder="Search by Order ID / Address"
+              placeholder="Scan Address"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
             />
